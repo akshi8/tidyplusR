@@ -1,21 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-TidyPlusR: a tool for data wrangling
-====================================
+<img src="tidypluslogo.png" align="right" border="none" width="250" height="250"/>TidyPlusR: a tool for data wrangling
+======================================================================================================================
 
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
-
-[![HitCount](https://hitt.herokuapp.com/tidyplus_python.svg..)](https://github.com/tidyplus_python)
-
-[![GitHub commit](https://img.shields.io/github/commits-since/UBC-MDS/tidyplus_python/v0.svg)](https://github.com/UBC-MDS/tidyplus_python/commit)
-
-[![Downloads](https://img.shields.io/github/downloads/UBC-MDS/tidyplus_python/total.svg)](https://github.com/UBC-MDS/tidyplus_python/graphs/traffic)
-
-[![forks](https://img.shields.io/github/forks/UBC-MDS/tidyplus_python.svg)](https://github.com/UBC-MDS/tidyplus_python/network)
-
-[![issues](https://img.shields.io/github/issues/UBC-MDS/tidyplus_python.svg)](https://github.com/UBC-MDS/tidyplus_python/issues)
-
-[![Build Status](https://travis-ci.org/UBC-MDS/tidyplusR.svg?branch=master)](https://travis-ci.org/UBC-MDS/tidyplusR)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues) [![Build Status](https://travis-ci.org/UBC-MDS/tidyplusR.svg?branch=master)](https://travis-ci.org/UBC-MDS/tidyplusR) [![codecov](https://codecov.io/gh/UBC-MDS/tidyplusR/branch/master/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/tidyplusR)
 
 Contributors:
 -------------
@@ -48,37 +36,30 @@ devtools::install_github("UBC-MDS/tidyplusR")
 Functions included:
 -------------------
 
-> Three main parts including different functions in `tidyplusR`
+Three main parts include different functions in `tidyplusR`
 
--   `Data Manipulation` : Datatype cleansing
--   `typemix`
-    -   The function helps to find the columns containing different types of data, like character and numeric. The input of the function is a data frame, and the output of the function will be a list of 3 data frames.
--   `cleanmix`
-    -   The function helps to clean our data frame. After knowing the location of discrepancy of data types, one can use this function to keep a type of data in certain columns.
-    -   Here, the input will be the output by `typemix` function, name of the column (a vector of the name of columns) that they want to clean, the type of data they want to work on, and if we want to keep or delete the certain type. The output will be a data frame like the original type but with specified data type in certain columns deleted.
--   `Missing Value Treatment` : Basic Imputation using `impute`
+-   **Data Type Cleansing** :
+    -   `typemix` \* The function helps to find the columns containing different types of data, like character and numeric. The input of the function is a data frame, and the output of the function will be a list of 3 data frames reporting details about the mixture of data types. The first data frame in the list is the same as the input data frame, the second one tells you the location and types of data in the columns where there is type mixture. The third data frame is a summary of the second data frame.
 
+    -   `cleanmix` \* The function helps to clean our data frame. After knowing the location of discrepancy of data types, one can use this function to keep a type of data in certain columns. \* Here, the input will be the output by `typemix` function, name of the column (a vector of the name of columns) that they want to clean, the type of data they want to work on, and if we want to keep or delete the certain type. The output will be a data frame like the original type but with specified data type in certain columns deleted.
+
+-   **Missing Value Treatment** : Basic Imputation using `impute`
     -   Imputation: replace missing values in a column of a dataframe, or multiple columns of dataframe based on the `method` of imputation
 
     -   `(Method = 'Mean')` replace using mean
     -   `(Method = 'Median')` replace using median
     -   `(Method = 'Mode')` replace using mode
 
--   `Markdown Table`:
-
--   `md_new()`: This function creates a bare bone for generating a markdown table. Alignments, and size of the table can be input by users.
-    -   Input: the size of table (number of rows and number of columns)
-    -   Output: a character vector of the source code.
--   `md_data()`: This function converts a dataframe or matrix into a markdown table format.
-    -   Input: a matrix or dataframe
-    -   Output: a character vector of the source code.
+-   **Markdown Table**:
+    -   `md_new()`: This function creates a bare bone for generating a markdown table. Alignments, and size of the table can be input by users. - Input: the size of table (number of rows and number of columns) - Output: a character vector of the source code.
+    -   `md_data()`: This function converts a dataframe or matrix into a markdown table format. - Input: a matrix or dataframe - Output: a character vector of the source code.
 
 Example
 -------
 
 This is a basic example which shows you how to solve a common problem:
 
-#### Datatype cleansing
+#### Data Type Cleansing
 
 The section has two functions, typemix and cleanmix.
 
@@ -132,16 +113,16 @@ cleanmix(typemix(dat),column=c(1,2),type=c("number","character"))
 library(tidyverse)
 ```
 
-    ## -- Attaching packages ----------------------------------------------------------------------------------------------------------------------- tidyverse 1.2.1 --
+    ## ── Attaching packages ────────
 
-    ## v ggplot2 2.2.1     v purrr   0.2.4
-    ## v tibble  1.4.2     v dplyr   0.7.4
-    ## v tidyr   0.8.0     v stringr 1.2.0
-    ## v readr   1.1.1     v forcats 0.2.0
+    ## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+    ## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
+    ## ✔ tidyr   0.8.0     ✔ stringr 1.3.0
+    ## ✔ readr   1.1.1     ✔ forcats 0.3.0
 
-    ## -- Conflicts -------------------------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
-    ## x dplyr::filter() masks stats::filter()
-    ## x dplyr::lag()    masks stats::lag()
+    ## ── Conflicts ─────────────────
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
 
 ``` r
 # Dummy dataframe
@@ -168,12 +149,12 @@ impute(dat,method = "mode") %>% head()
 ```
 
     ##   x y    w z     b     a
-    ## 1 b a 16.6 a FALSE 29.00
-    ## 2 a a 46.0 c  TRUE  6.00
-    ## 3 b a 16.6 c FALSE 10.00
-    ## 4 c c 22.0 a  TRUE 11.81
-    ## 5 c a 16.6 a  TRUE 11.81
-    ## 6 a a 12.0 a FALSE 14.00
+    ## 1 a b 34.6 a  TRUE 40.00
+    ## 2 b c 33.0 c FALSE  1.00
+    ## 3 c c 34.6 a  TRUE 38.00
+    ## 4 c c 15.0 a FALSE 23.53
+    ## 5 b b 34.6 a FALSE 23.53
+    ## 6 c c 22.0 b FALSE 37.00
 
 #### Markdown table
 
@@ -282,28 +263,26 @@ md_data(mtcars, row.index = 1:3, col.index = 1:4, row.names = F)
     ## |21|6|160|110|
     ## |22.8|4|108|93|
 
-Used Scenario
+User Scenario
 -------------
 
-> Using Data Manipulation functionality
-
--   Users can use the package when they want to clean and wrangle their data. For example, if the data has not been cleaned yet, users can use function `typemix` to check where data is not clean and use `cleanmix` to clean data. Based on personal work experience, the mix of number and character is usually seen in the data collected from the survey. After clean data is ready, one can use the `Missing Value Treatment` to deal with missing data by EM algorithm. The `emphasizeon` function can be used to highlight the factors that he is interested in. After the wrangling of data, one can use function `Markdown Table` to output the data frame in a markdown format.
+-   Users can use the package when they want to clean and wrangle their data. For example, if the data has not been cleaned yet, users can use function `typemix` to check where data is not clean and use `cleanmix` to clean data. Based on personal work experience, the mix of number and character is usually seen in the data collected from the survey. After clean data is ready, one can use the `impute()` to deal with missing data with mean/median/mode. The resulting data frame can be output to markdown syntax with `md_data()`. Your can also use `md_new()` to create a empty markdown table.
 
 Existing features in R and Python ecosystem similar to `tidyplus`
 -----------------------------------------------------------------
 
--   Data Manipulation
--   [dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) and [tidyverse](https://cran.r-project.org/web/packages/tidyverse/index.html) these R libraries have very powerful data wrangling tools but with `tidyplus` user can explicitly perform string processing/ datatype conversion without affecting the overall column type (which is convenient when you have really messed up data with mix of strings and numbers)
+-   Data Type Cleansing
+-   R does not have functions that can explicitly perform string processing/ data type conversion without affecting the overall column type.
 
 -   Missing Value treatment
 -   R doesn't have imputation methods which use `Mode` for missing value treatment, which can be useful for categorical and numeric variables [MICE](https://cran.r-project.org/web/packages/mice/index.html) package in R do provide limited imputation using mean, median, etc.
 -   Markdown table in R
 -   R has library [`Kable`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) which can output a dataset in the form of a markdown table but with `tidyplus` user will have more freedom with data types and formatting.
 
-Ideas subject to change
------------------------
+Branch coverage
+---------------
 
--   As a part of the initial proposal, the above ideas can be implemented. However, some functionality are subject to change based on the project timeline or technical complexity
+<img src="tests/full_coverage.png" width="980" />
 
 License
 -------
